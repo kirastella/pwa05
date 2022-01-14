@@ -1,7 +1,12 @@
 import React, {useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import OneSignal from 'react-onesignal';
+import Location from './components/Location';
+import PWAPrompt from 'react-ios-pwa-prompt';
+import Testlocalbase from './components/Testlocalbase';
+import Map from './components/Map';
+import { Link, Routes, Route } from 'react-router-dom';
+
 
 function App() {
   
@@ -14,22 +19,31 @@ function App() {
 
 
   return (
+  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <h1>Dette er min app</h1>
+      
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/map">Map</Link>
+        <Link to="/database">Database</Link>
+        <Link to="/fnyf">Et ottende sted</Link>
+      </nav>
+
+
+      <Routes>
+        <Route path="/" element={<Location />} />
+        <Route path="map" element={<Map />} />
+        <Route path="database" element={<Testlocalbase />} />
+      </Routes>
+
+    <footer>
+      <p>Don't do it like this - do it right!</p>
+    </footer>
+    
+    <PWAPrompt />
+  </div>
   );
 }
 
